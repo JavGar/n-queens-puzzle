@@ -1,3 +1,7 @@
+asyncpg
+databases[postgres]
 fastapi[standard]
 permutations
+psycopg2
 pytest
+sqlalchemy
