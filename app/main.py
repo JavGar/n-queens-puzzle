@@ -1,11 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from sqlalchemy import select, asc
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from db.db import database, solutions_table
-from utils.n_queens_puzzle import (
-    get_n_queens_puzzle_solutions,
-    get_n_queens_puzzle_stored_solutions,
-)
+from db.db import database, get_n_queens_puzzle_stored_solutions, solutions_table
+from utils.n_queens_puzzle import get_n_queens_puzzle_solutions
 
 app = FastAPI()
 
