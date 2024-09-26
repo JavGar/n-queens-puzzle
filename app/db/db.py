@@ -7,7 +7,5 @@ database = Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
 solutions_table = sqlalchemy.Table(
-    "pussle_solutions",
-    metadata,
-    autoload_with=sqlalchemy.create_engine(DATABASE_URL)
+    "pussle_solutions", metadata, autoload_with=sqlalchemy.create_engine(DATABASE_URL)
 )

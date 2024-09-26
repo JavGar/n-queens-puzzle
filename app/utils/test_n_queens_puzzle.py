@@ -1,6 +1,7 @@
 import pytest
 from n_queens_puzzle import get_n_queens_puzzle_solutions
 
+
 def test_get_n_queens_puzzle_solutions():
     assert len(get_n_queens_puzzle_solutions(1)) == 1
     assert len(get_n_queens_puzzle_solutions(2)) == 0
