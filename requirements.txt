@@ -3,5 +3,5 @@ databases[postgres]
 fastapi[standard]
 permutations
 psycopg2
-pytest
+pytest-cov
 sqlalchemy
