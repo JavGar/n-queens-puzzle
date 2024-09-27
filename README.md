@@ -9,6 +9,7 @@ This service solves the N-Queens Puzzle.
 - [How It Works](#how-it-works)
 - [Running the Service](#running-the-service)
 - [API Endpoints](#api-endpoints)
+- [References](#references)
 
 ## Getting Started
 
@@ -50,3 +51,7 @@ The service exposes the following API endpoints:
   - **Query Parameter**: `n` (the board size)
   - **Example**: `localhost:8000/puzzle?n=5`
   - **Description**: Returns the solution for the specified N-Queens board size. If the solution has been calculated before, it will fetch it from the database.
+
+## References
+- [N-queens problem](https://rosettacode.org/wiki/N-queens_problem#Python:_Raymond_Hettingers_permutations_based_solution)
+- [One of the oldest chess based puzzles is known, affectionately, as The Eight Queens Problem.](http://datagenetics.com/blog/august42012/index.html)
