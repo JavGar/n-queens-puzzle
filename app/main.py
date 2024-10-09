@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query
 from sqlalchemy import select, asc
 from sqlalchemy.dialects.postgresql import insert as pg_insert
+from sqlalchemy.exc import DBAPIError, OperationalError, SQLAlchemyError
 from db.db import database, get_n_queens_puzzle_stored_solutions, solutions_table
 from utils.n_queens_puzzle import get_n_queens_puzzle_solutions
 
@@ -24,8 +25,14 @@ async def get_solutions():
         query = select(solutions_table).order_by(solutions_table.c.n_queens)
         results = await database.fetch_all(query)
         return {"message": "All solutions retrieved", "solutions": results}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except OperationalError as e:
+        raise HTTPException(
+            status_code=503, detail="Database is not available: " + str(e)
+        )
+    except DBAPIError as e:
+        raise HTTPException(status_code=500, detail="Database error: " + str(e))
+    except SQLAlchemyError as e:
+        raise HTTPException(status_code=500, detail="SQLAlchemy error: " + str(e))
 
 
 @app.get("/puzzle")
@@ -52,8 +59,14 @@ async def get_puzzle_solutions(
         query = pg_insert(solutions_table).values(n_queens=n, solutions=solutions)
         query = query.on_conflict_do_nothing(index_elements=["n_queens"])
         await database.execute(query)
-    except Exception as e:
-        raise HTTPException(Status_code=500, detail=str(e))
+    except OperationalError as e:
+        raise HTTPException(
+            status_code=503, detail="Database is not available: " + str(e)
+        )
+    except DBAPIError as e:
+        raise HTTPException(status_code=500, detail="Database error: " + str(e))
+    except SQLAlchemyError as e:
+        raise HTTPException(status_code=500, detail="SQLAlchemy error: " + str(e))
 
     return {"message": "Solutions retrieved", "n": n, "solutions": solutions}
 
