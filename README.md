@@ -53,5 +53,5 @@ The service exposes the following API endpoints:
   - **Description**: Returns the solution for the specified N-Queens board size. If the solution has been calculated before, it will fetch it from the database.
 
 ## References
-- [N-queens problem](https://rosettacode.org/wiki/N-queens_problem#Python:_Raymond_Hettingers_permutations_based_solution)
+- [N-queens problem](https://www.aswinvanwoudenberg.com/posts/dancing-queens/)
 - [One of the oldest chess based puzzles is known, affectionately, as The Eight Queens Problem.](http://datagenetics.com/blog/august42012/index.html)
